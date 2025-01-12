@@ -14,15 +14,24 @@ function getComputerChoice(){
 // Gets human choice.
 function getHumanChoice(){
     let playerChoice = prompt('Choose either rock, paper, or scissors.');
-    if (playerChoice != 'rock' || playerChoice != 'paper' || playerChoice != 'rock') {
-        return "You've enter an invalid choice. Try again.";
-    } else {
+
+    if(playerChoice === undefined) {
+        console.log("The prompt will default to 'rock'.")
+        return 'rock'
+    }
+
+    playerChoice = playerChoice
+
+    if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
         return playerChoice;
+    } else {
+        console.log('You\'ve entered an invalid input. Try again.');
+        return 'rock';
     }
 };
 
-var humanScore = 0;
-var computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 // Plays a single round
 function playRound(humanChoice, computerChoice){
@@ -30,25 +39,17 @@ function playRound(humanChoice, computerChoice){
     const choice1 = computerChoice.toLowerCase();
 
     if(choice0 == choice1) {
-        return "Its a draw";
-    } else if(choice0 == 'rock' && choice1 == 'scissors') {
+        console.log("Its a draw");
+    } else if(
+        (choice0 == 'rock' && choice1 == 'scissors') ||
+        (choice0 == 'paper' && choice1 ==  'rock') ||
+        (choice0 == 'scissors' && choice1 == 'paper')
+        ) {
         humanScore++;
-        return "You win!";
-    } else if(choice0 == 'rock' && choice1 == 'paper') {
+        console.log("You win!");
+    } else {
         computerScore++;
-        return "You lose!";
-    } else if(choice0 == 'paper' && choice1 ==  'rock') {
-        humanScore++;
-        return "You win!";
-    } else if (choice0 == 'paper' && choice1 == 'scissors') {
-        computerScore++;
-        return "You lose!";
-    } else if (choice0 == 'scissors' && choice1 == 'paper') {
-        humanScore++;
-        return "You win!";
-    } else if (choice0 == 'scissors' && choice1 == 'rock') {
-        humanScore++;
-        return "You lose!";
+        console.log("You lose!");
     }
 };
 
@@ -59,7 +60,7 @@ function playGame() {
 for (let i = 0; i < 6; i++) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
-
+    console.log(`Round ${i + 1}: Human: ${humanSelection}, Computer: ${computerSelection}`);
     playRound(humanSelection, computerSelection);
 }
 
@@ -72,4 +73,4 @@ if (humanScore > computerScore){
 }
 };
 
-playGame()
+playGame();
