@@ -14,19 +14,19 @@ function getComputerChoice(){
 // Gets human choice.
 function getHumanChoice(){
     let playerChoice = prompt('Choose either rock, paper, or scissors.');
-
+    
+    // Defaults to 'rock if the playerChoice is undefined.
     if(playerChoice === undefined) {
         console.log("The prompt will default to 'rock'.")
         return 'rock'
     }
 
-    playerChoice = playerChoice
-
+    // Checks whether the player entered the correct input.
     if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
         return playerChoice;
     } else {
         console.log('You\'ve entered an invalid input. Try again.');
-        return 'rock';
+        return 'rock'; // Returns default input 'rock'
     }
 };
 
@@ -38,6 +38,7 @@ function playRound(humanChoice, computerChoice){
     const choice0 = humanChoice.toLowerCase();
     const choice1 = computerChoice.toLowerCase();
 
+    // Compares the players choice and the computers choice.
     if(choice0 == choice1) {
         console.log("Its a draw");
     } else if(
@@ -60,10 +61,11 @@ function playGame() {
 for (let i = 0; i < 6; i++) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
-    console.log(`Round ${i + 1}: Human: ${humanSelection}, Computer: ${computerSelection}`);
+    console.log(`Round ${i + 1}: Human: ${humanSelection}, Computer: ${computerSelection}`);// Shows the round and choice for both human and computer.
     playRound(humanSelection, computerSelection);
 }
 
+// Show the status of the entire game.
 if (humanScore > computerScore){
     console.log("You win the game!");
 } else if (humanScore === computerScore){ 
