@@ -11,25 +11,6 @@ function getComputerChoice(){
     }
 };
 
-// Gets human choice.
-// function getHumanChoice(){
-//     let playerChoice = prompt('Choose either rock, paper, or scissors.');
-    
-//     // Defaults to 'rock if the playerChoice is undefined.
-//     if(playerChoice === undefined) {
-//         console.log("The prompt will default to 'rock'.")
-//         return 'rock'
-//     }
-
-//     // Checks whether the player entered the correct input.
-//     if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
-//         return playerChoice;
-//     } else {
-//         console.log('You\'ve entered an invalid input. Try again.');
-//         return 'rock'; // Returns default input 'rock'
-//     }
-// };
-
 let humanScore = 0;
 let computerScore = 0;
 let roundResult = '';
